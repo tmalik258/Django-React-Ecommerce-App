@@ -42,10 +42,15 @@ INSTALLED_APPS = [
     'base',
 
     # external apps
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    # external middleware
+    "corsheaders.middleware.CorsMiddleware",
+
+    # internal middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,3 +132,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django Cors Headers
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000'
+]
