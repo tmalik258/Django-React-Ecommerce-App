@@ -12,6 +12,7 @@ const ProductScreen = () => {
 	{
 		const getProduct = async () =>
 		{
+			console.log(id)
 			const response = await axios.get( `/api/product/${ id }` );
 			setProduct( response.data );
 		};
@@ -42,7 +43,7 @@ const ProductScreen = () => {
 						<ListGroup.Item>
 							<Rating
 								value={product.rating}
-								text={`${product.numReviews} ratings`}
+								text={`${product.num_reviews} ratings`}
 								color={"#f8e825"}
 							/>
 						</ListGroup.Item>
@@ -66,14 +67,14 @@ const ProductScreen = () => {
 								<Row>
 									<Col>Status:</Col>
 									<Col>
-										{product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+										{product.count_in_stock > 0 ? "In Stock" : "Out of Stock"}
 									</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Button
 									className="btn-block"
-									disabled={product.countInStock > 0 ? false : true}
+									disabled={product.count_in_stock > 0 ? false : true}
 									type="button"
 								>
 									Add to Cart
